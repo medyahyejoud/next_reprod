@@ -2,8 +2,6 @@ import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 
-import Footer from "@/components/footer";
-import Navigation from "@/components/navigation";
 import { getI18n, getStaticParams } from "@/locales/server";
 
 import "./globals.css";
@@ -49,9 +47,7 @@ export default function RootLayout({
           sora.className,
         )}
       >
-        <Navigation />
-        <div>{children}</div>
-        <Footer />
+        {children}
       </body>
     </html>
   );

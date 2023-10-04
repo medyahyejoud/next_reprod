@@ -1,44 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
 
+import { sentenceSplit } from "@/lib/utils";
 import { getI18n } from "@/locales/server";
 
-import { cn, sentenceSplit } from "../../lib/utils";
-import HeroImage from "../../public/images/hero-image.png";
-import Button from "../button";
-import Container from "../container";
-import Heading from "../heading";
-import Text from "../text";
-import TypedHeading from "../typed-heading";
-
-const bubbleSizes = {
-  default: "text-sm desktop:text-xl",
-  large: "text-lg desktop:text-2xl",
-};
-
-type TextBubbleProps = {
-  children: React.ReactNode;
-  size?: "large" | "default";
-  className?: string;
-};
-
-function TextBubble({
-  children,
-  size = "default",
-  className = "",
-}: TextBubbleProps) {
-  return (
-    <div
-      className={cn(
-        "text-2x absolute animate-zoom rounded-large bg-white px-8 py-2 font-display font-bold shadow-meduim dark:bg-dark-gray desktop:px-12 desktop:py-4",
-        bubbleSizes[size],
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-}
+import Button from "./button";
+import Container from "./container";
+import Heading from "./heading";
+import Text from "./text";
+import TypedHeading from "./typed-heading";
 
 async function HeroSection() {
   const t = await getI18n();
@@ -79,37 +48,6 @@ async function HeroSection() {
                 <Button>{t("contact-us")}</Button>
               </Link>
             </div>
-          </div>
-          <div className="dra relative m-0 w-60 select-none tablet:my-6 tablet:ml-16 tablet:mr-4 desktop:my-12 desktop:mr-12 desktop:w-[360px]">
-            <Image
-              alt="Hero image representing Next technology products"
-              draggable={false}
-              src={HeroImage}
-            />
-            <TextBubble
-              className="-left-6 -top-4 desktop:-left-10 desktop:-top-6"
-              size="large"
-            >
-              DigiPay
-            </TextBubble>
-            <TextBubble className="animation-delay-2000 -right-2 top-6">
-              Flow
-            </TextBubble>
-            <TextBubble
-              className="animation-delay-4000 -left-8 top-20 desktop:-left-14 desktop:top-28"
-              size="large"
-            >
-              FastPay
-            </TextBubble>
-            <TextBubble className="-right-10 top-[88px] desktop:-right-8 desktop:top-32">
-              CashApp
-            </TextBubble>
-            <TextBubble
-              className="animation-delay-2000 -right-6 bottom-10 desktop:-right-8 desktop:bottom-16"
-              size="large"
-            >
-              NexConnect
-            </TextBubble>
           </div>
         </div>
       </Container>
